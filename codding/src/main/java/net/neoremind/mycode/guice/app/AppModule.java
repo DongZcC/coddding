@@ -1,6 +1,7 @@
 package net.neoremind.mycode.guice.app;
 
 import com.google.inject.*;
+import com.google.inject.Module;
 import com.google.inject.name.Named;
 import com.google.inject.name.Names;
 import net.neoremind.mycode.guice.annotation.NS2;
