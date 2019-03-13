@@ -1,5 +1,7 @@
 package com.dzc.learn.jms;
 
+import lombok.extern.slf4j.Slf4j;
+
 import javax.jms.*;
 import javax.naming.InitialContext;
 import java.io.BufferedReader;
@@ -81,7 +83,6 @@ public class Chat2 implements MessageListener {
         try {
 //            if (args.length != 3)
 //                System.out.println("Factory, Topic, or username missing");
-
             // args[0]=topicFactory; args[1]=topicName; args[2]=username
             Chat2 chat = new Chat2("TopicCF", "MyTopic", "zyw");
 

@@ -2,71 +2,55 @@ package com.dzc.learn.concurrency;
 
 public class TwoThread {
 
-    private static volatile boolean flag = false;
-
-    private static int num1 = 1;
-
-    private static int num2 = 2;
-
-    private static int end = 10;
-
     private static final Object lock = new Object();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        TwoThread tw = new TwoThread();
+        tw.turning();
+    }
 
-        Thread t1 = new Thread("T1") {
-            @Override
-            public void run() {
-                while (true) {
-                    synchronized (lock) {
-                        if (flag) {
-                            try {
-                                lock.wait();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
+
+    private volatile int count = 0;
+
+    public void turning() throws InterruptedException {
+        Thread even = new Thread(() -> {
+            while (count <= 100) {
+                synchronized (lock) {
+                    System.out.println("偶数：" + count++);
+                    lock.notifyAll();
+
+                    try {
+                        if (count <= 100) {
+                            lock.wait();
                         }
-                        flag = true;
-                        if (num1 > end)
-                            break;
-                        System.out.println(num1);
-                        num1 += 2;
-                        lock.notifyAll();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                 }
             }
-        };
+        });
 
-        Thread t2 = new Thread("T2") {
-            @Override
-            public void run() {
-                while (true) {
-                    synchronized (lock) {
-                        if (!flag) {
-                            try {
-                                lock.wait();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
+
+        Thread odd = new Thread(() -> {
+            while (count <= 100) {
+                synchronized (lock) {
+                    System.out.println("奇数：" + count++);
+                    lock.notifyAll();
+
+                    try {
+                        if (count <= 100) {
+                            lock.wait();
                         }
-                        flag = false;
-                        if (num2 > end)
-                            break;
-                        System.out.println(num2);
-                        num2 += 2;
-                        lock.notifyAll();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                 }
             }
-        };
-
-        t2.start();
-        t1.start();
+        });
 
 
-        // 最终总会有一个线程在等待 ， 不会退出
-//        synchronized (lock) {
-//            lock.notifyAll();
-//        }
+        even.start();
+        Thread.sleep(1);
+        odd.start();
     }
 }
