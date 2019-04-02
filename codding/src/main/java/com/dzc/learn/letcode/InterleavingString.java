@@ -20,21 +20,30 @@ public class InterleavingString {
             return false;
         }
 
-        int[] count = new int[26];
-        String tmp = s1 + s2;
-        for (int i = 0; i < s3.length(); i++) {
-            count[tmp.charAt(i)]++;
-            count[s3.charAt(i)]--;
+        boolean[][] dp = new boolean[s2.length() + 1][s1.length() + 1];
+        dp[0][0] = true;
+
+        for (int i = 1; i < dp[0].length; i++) {
+            dp[0][i] = dp[0][i - 1] && s1.charAt(i - 1) == s3.charAt(i - 1);
         }
 
-        for (int c : count) {
-            if (c != 0) {
-                return false;
+        for (int i = 1; i < dp.length; i++) {
+            dp[i][0] = dp[i - 1][0] && s2.charAt(i - 1) == s3.charAt(i - 1);
+        }
+
+
+        for (int i = 1; i < dp.length; i++) {
+            for (int j = 1; j < dp[0].length; j++) {
+                dp[i][j] = (dp[i - 1][j] && s2.charAt(i - 1) == s3.charAt(i + j - 1))
+                        || (dp[i][j - 1] && s1.charAt(j - 1) == s3.charAt(i + j - 1));
             }
         }
 
-        // s1 + s2 各种组合; 但是要保证一点；就是有序
+        return dp[s2.length()][s1.length()];
+    }
 
-        return false;
+    public static void main(String[] args) {
+        InterleavingString il = new InterleavingString();
+        System.out.println(il.isInterleave("a", "", "a"));
     }
 }

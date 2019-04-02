@@ -1,5 +1,7 @@
 package com.dzc.learn.concurrency;
 
+import javax.transaction.NotSupportedException;
+
 /**
  * N个线程，循环打印出0至100
  * <p>
@@ -24,7 +26,6 @@ public class NThread {
     static class SimpleTask implements Runnable {
 
         private int threadNo;
-
 
         public SimpleTask(int threadNo) {
             this.threadNo = threadNo;
