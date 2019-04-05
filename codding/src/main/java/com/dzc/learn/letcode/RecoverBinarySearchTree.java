@@ -27,11 +27,11 @@ package com.dzc.learn.letcode;
  * <p>
  * Input: [3,1,4,null,null,2]
  * <p>
- * 3
+ *  3
  * / \
  * 1   4
- * /
- * 2
+ *    /
+ *   2
  * <p>
  * 1 , 3 , 2 , 4
  * Output: [2,1,4,null,null,3]
