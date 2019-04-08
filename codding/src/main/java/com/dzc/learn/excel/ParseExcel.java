@@ -56,7 +56,7 @@ public class ParseExcel {
             ExcelWriter writer = EasyExcelFactory.getWriter(out);
             Sheet sheet = new Sheet(1, lineNum);
             setColumnWidth(sheet);
-            writer.write0(createOutput(writer), sheet);
+            writer.write0(createOutput(), sheet);
             lineToMerge1.forEach(l -> writer.merge(l - 1, l - 1, 4, 6));
             lineToMerge2.forEach(l -> writer.merge(l - 1, l - 1, 2, 6));
             writer.finish();
@@ -75,7 +75,7 @@ public class ParseExcel {
         sheet.setColumnWidthMap(columnWidth);
     }
 
-    private static List<List<String>> createOutput(ExcelWriter writer) {
+    private static List<List<String>> createOutput() {
         List<List<String>> res = new ArrayList<>();
 
         services.forEach(service -> {
