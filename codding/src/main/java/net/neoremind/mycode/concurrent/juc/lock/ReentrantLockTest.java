@@ -13,7 +13,7 @@ public class ReentrantLockTest {
 
     public static void main(String[] args) {
         ExecutorService executor = Executors.newFixedThreadPool(2);
-        final ReentrantLock rl = new ReentrantLock();
+        final ReentrantLock rl = new ReentrantLock(true);
 
         class Worker implements Runnable {
             private String name;
