@@ -4,6 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.function.Consumer;
 
 /**
  * http://www.javaworld.com/article/2078848/java-concurrency/java-concurrency-java-101-the-next-generation-java
@@ -55,3 +56,4 @@ public class ReentrantLockTest {
         executor.shutdownNow();
     }
 }
+
