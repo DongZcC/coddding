@@ -72,7 +72,8 @@ public class QLender implements MessageListener {
             TextMessage tmsg = qSession.createTextMessage();
             tmsg.setText(accept ? "Accepted!" : "Declined");
             System.out.println(msg.getJMSMessageID());
-            tmsg.setJMSCorrelationID(msg.getJMSMessageID());
+//            tmsg.setJMSCorrelationID(msg.getJMSMessageID());
+            tmsg.setJMSCorrelationID(msg.getStringProperty("UUID"));
 
             // 创建消息发送者并发送消息
             QueueSender qSender = qSession.createSender((Queue) message.getJMSReplyTo());

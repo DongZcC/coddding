@@ -56,6 +56,7 @@ public class Chat2 implements MessageListener {
     }
 
     /* Receive Messages From Topic Subscriber */
+    @Override
     public void onMessage(Message message) {
         try {
             TextMessage textMessage = (TextMessage) message;

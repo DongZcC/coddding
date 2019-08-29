@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
+import java.util.UUID;
 
 public class QBorrower {
 
@@ -52,13 +53,19 @@ public class QBorrower {
             msg.setDouble("loanAmount", loanAmt);
             msg.setJMSReplyTo(reponseQ);
 
+            UUID uuid = UUID.randomUUID();
+            String uniqueId = uuid.toString();
+            msg.setStringProperty("UUID", uniqueId);
+
+
             // 创建发送者并发送消息
             QueueSender qSender = qSession.createSender(requestQ);
             qSender.send(msg);
 
             // 等待查看贷款申请被接收 或者拒绝
 
-            String filter = "JMSCorrelationID='" + msg.getJMSMessageID() + "'";
+//            String filter = "JMSCorrelationID='" + msg.getJMSMessageID() + "'";
+            String filter = "JMSCorrelationID='" + uniqueId + "'";
             System.out.println(filter);
             QueueReceiver qReceiver = qSession.createReceiver(reponseQ, filter);
             TextMessage tmsg = (TextMessage) qReceiver.receive(30000);
