@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzc.MainController">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="172.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="222.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.0" minWidth="10.0" prefWidth="208.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="285.0" minHeight="0.0" prefHeight="77.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="320.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="320.0" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="320.0" minHeight="10.0" prefHeight="89.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="181.0" text="内存表生成工具" textAlignment="CENTER" GridPane.columnIndex="1">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+      </Label>
+      <Label prefHeight="20.0" prefWidth="132.0" text="标准字段" GridPane.rowIndex="1">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+      </Label>
+      <TextField fx:id="stdText" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </TextField>
+      <Button mnemonicParsing="false" onAction="#chooseStdField" text="选择文件" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <Label prefHeight="20.0" prefWidth="132.0" text="描述文件" GridPane.rowIndex="2">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+      </Label>
+      <TextField fx:id="describeText" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Button mnemonicParsing="false" onAction="#chooseDescribeFile" text="选择文件" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <Label prefHeight="20.0" prefWidth="132.0" text="文件生成位置" GridPane.rowIndex="3">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+      </Label>
+      <TextField fx:id="outputText" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Button mnemonicParsing="false" onAction="#chooseOutDir" text="选择目录" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#generate" text="生成" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="70.0" />
+         </GridPane.margin>
+      </Button>
+   </children>
+</GridPane>
