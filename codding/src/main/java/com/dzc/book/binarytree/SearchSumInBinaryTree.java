@@ -1,6 +1,7 @@
 package com.dzc.book.binarytree;
 
 import java.util.HashMap;
+import java.util.PriorityQueue;
 
 /**
  * @author Administrator
@@ -34,5 +35,30 @@ public class SearchSumInBinaryTree {
             sumMap.remove(curSum);
         }
         return maxLen;
+    }
+
+    public static void main(String[] args) {
+        Node root = new Node(-3);
+        Node node3 = new Node(3);
+        Node node1 = new Node(1);
+        Node node0 = new Node(0);
+        Node node01 = new Node(1);
+        Node node6 = new Node(6);
+        Node node99 = new Node(-9);
+        Node node2 = new Node(2);
+        Node node11 = new Node(1);
+
+
+        root.left = node3;
+        root.left = node99;
+        node3.left = node1;
+        node3.right = node0;
+        node0.left = node01;
+        node0.right = node6;
+        node99.left = node2;
+        node99.right = node11;
+
+        SearchSumInBinaryTree search = new SearchSumInBinaryTree();
+        search.getMaxLength(root, 6);
     }
 }
