@@ -22,6 +22,5 @@ public class SelectionSort {
                 arr[i] = tmp;
             }
         }
-
     }
 }
