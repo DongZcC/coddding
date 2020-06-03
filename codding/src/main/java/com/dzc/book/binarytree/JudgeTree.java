@@ -40,7 +40,7 @@ public class JudgeTree {
     /**
      * 判断树是否为完全二叉树
      * <p>
-     * 每个节点都包含了左孩子和右孩子
+     * 每个节点都包含了左孩子，
      *
      * @param head
      * @return
